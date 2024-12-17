@@ -16,7 +16,6 @@ function App() {
   const [value, setValue] = useState("");
   const [list, setList] = useState([]);
   const [error, setError] = useState("");
-  // const [isValueVaild, getIsValueVaild] = useState(false);
   const [id, getId] = useState(1);
   const [date, getDate] = useState(
     new Date().toLocaleDateString("ru-Ru", timeOptions)
@@ -24,19 +23,21 @@ function App() {
 
   const onInputButtonClick = () => {
     const promptValue = prompt("Введите новое значение");
+    let errorMessage = "";
+
     if (promptValue.length > 2) {
       setValue(promptValue);
-      setError("");
     } else {
-      setError("Введенное значение должно содержать минимум 3 символа");
+      errorMessage = "Введенное значение должно содержать минимум 3 символа";
     }
+
+    setError(errorMessage);
   };
 
   const onAddButtonClick = () => {
     getId(id + 1);
     getDate(new Date().toLocaleDateString("ru-Ru", timeOptions));
     const updatedList = [...list, { id, value, date }];
-    console.log(updatedList);
     setList(updatedList);
     setValue("");
     setError("");
