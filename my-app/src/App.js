@@ -16,8 +16,8 @@ function App() {
   const [value, setValue] = useState("");
   const [list, setList] = useState([]);
   const [error, setError] = useState("");
-  const [id, getId] = useState(1);
-  const [date, getDate] = useState(
+  const [id, setId] = useState(1);
+  const [date, setDate] = useState(
     new Date().toLocaleDateString("ru-Ru", timeOptions)
   );
 
@@ -35,8 +35,8 @@ function App() {
   };
 
   const onAddButtonClick = () => {
-    getId(id + 1);
-    getDate(new Date().toLocaleDateString("ru-Ru", timeOptions));
+    setId(id + 1);
+    setDate(new Date().toLocaleDateString("ru-Ru", timeOptions));
     const updatedList = [...list, { id, value, date }];
     setList(updatedList);
     setValue("");
